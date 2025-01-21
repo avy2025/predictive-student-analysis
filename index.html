@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Student Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Your Career Path</h1>
+        <form id="interestForm">
+            <label for="interest">Enter Your Field of Interest:</label>
+            <input type="text" id="interest" name="interest" placeholder="e.g. Technology, Arts, Business">
+            <button type="submit">Predict</button>
+        </form>
+        <h2>Suggested Careers:</h2>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        document.getElementById("interestForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const interest = document.getElementById("interest").value;
+            fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ interest: interest })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const result = data.tips ? `Career: ${data.career.join(', ')}\\nTips: ${data.tips}` : `Career: ${data.career.join(', ')}`;
+                document.getElementById("result").innerText = result;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
