@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Student Analysis - Skill Roadmaps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'black': '#000000',
+                        'silver-dark': '#1a1a1a',
+                        'silver-light': '#d4d4d4',
+                        'silver-card': '#2a2a2a',
+                        'blue-primary': '#3b82f6',
+                        'blue-hover': '#1d4ed8',
+                        'blue-glow': '#60a5fa',
+                        'green-success': '#10b981'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-text { 
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #ffffff 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        .career-card input:checked + div {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-black text-silver-light min-h-screen">
+    
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-silver-dark/80 backdrop-blur-md border-b border-silver-dark/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-primary to-blue-glow rounded-2xl flex items-center justify-center shadow-2xl">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold gradient-text">Skill Roadmap Analyzer</h1>
+                        <p class="text-xs text-silver-light/60">Technical + Soft Skills for Any Career</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
+        
+        <!-- Hero: Career-Focused -->
+        <section class="text-center mb-24 lg:mb-32">
+            <div class="bg-silver-dark/30 backdrop-blur-md border border-silver-dark/50 rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    <span class="block text-white">Master Any Career</span>
+                    <span class="gradient-text block">Complete Skill Roadmap</span>
+                </h2>
+                
+                <p class="text-xl md:text-2xl text-silver-light/80 max-w-3xl mx-auto mb-12 lg:mb-16 leading-relaxed">
+                    Pick your dream field → Get exact technical skills, tools, soft skills, daily habits & 
+                    12-month roadmap to become job-ready
+                </p>
+                
+                <button onclick="scrollToForm()" class="px-12 py-6 bg-gradient-to-r from-blue-primary to-blue-glow hover:from-blue-hover hover:to-blue-primary text-white font-bold text-xl rounded-2xl shadow-2xl hover:shadow-3xl hover:-translate-y-1 transition-all duration-300">
+                    Build My Roadmap →
+                </button>
+            </div>
+        </section>
+
+        <!-- Career Selection Form -->
+        <section id="form-section">
+            <div class="bg-silver-card border border-silver-dark/50 rounded-3xl p-10 lg:p-16 shadow-2xl mb-24">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">Choose Your Target Career</h3>
+                    <p class="text-xl text-silver-light/80 max-w-2xl mx-auto mb-8">
+                        Select field + experience level → Get complete skill matrix
+                    </p>
+                </div>
+
+                <form id="skillForm" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Primary Career Field -->
+                    <div class="lg:col-span-2">
+                        <label class="block text-lg font-semibold text-silver-light mb-4">Target Career Field <span class="text-red-400">*</span></label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mb-6" id="career-grid">
+                            <label class="career-card p-6 rounded-2xl border-2 border-silver-dark/50 hover:border-blue-primary hover:bg-blue-primary/5 cursor-pointer transition-all hover:scale-[1.02] group">
+                                <input type="radio" name="career" value="fullstack-dev" class="sr-only" required>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-primary to-blue-glow rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                        </svg>
+                                    </div>
+                                    <div class="font-bold text-lg text-white group-hover:translate-y-[-2px] transition-transform">Fullstack Developer</div>
+                                    <div class="text-sm text-silver-light/80 mt-1">React + Node.js</div>
+                                </div>
+                            </label>
+
+                            <label class="career-card p-6 rounded-2xl border-2 border-silver-dark/50 hover:border-blue-primary hover:bg-blue-primary/5 cursor-pointer transition-all hover:scale-[1.02] group">
+                                <input type="radio" name="career" value="ml-engineer" class="sr-only" required>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-green-success to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4 4 0 01-5.656 0m0 0l-2.829-2.829m2.829 2.828L9.343 17M19.657 17l-2.828 2.829"/>
+                                        </svg>
+                                    </div>
+                                    <div class="font-bold text-lg text-white group-hover:translate-y-[-2px] transition-transform">ML Engineer</div>
+                                    <div class="text-sm text-silver-light/80 mt-1">Python + TensorFlow</div>
+                                </div>
+                            </label>
+
+                            <label class="career-card p-6 rounded-2xl border-2 border-silver-dark/50 hover:border-blue-primary hover:bg-blue-primary/5 cursor-pointer transition-all hover:scale-[1.02] group">
+                                <input type="radio" name="career" value="data-analyst" class="sr-only" required>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-violet-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="font-bold text-lg text-white group-hover:translate-y-[-2px] transition-transform">Data Analyst</div>
+                                    <div class="text-sm text-silver-light/80 mt-1">SQL + Power BI</div>
+                                </div>
+                            </label>
+
+                            <label class="career-card p-6 rounded-2xl border-2 border-silver-dark/50 hover:border-blue-primary hover:bg-blue-primary/5 cursor-pointer transition-all hover:scale-[1.02] group">
+                                <input type="radio" name="career" value="content-creator" class="sr-only" required>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.5h13m-7.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="font-bold text-lg text-white group-hover:translate-y-[-2px] transition-transform">Content Creator</div>
+                                    <div class="text-sm text-silver-light/80 mt-1">YouTube + Instagram</div>
+                                </div>
+                            </label>
+
+                            <label class="career-card p-6 rounded-2xl border-2 border-silver-dark/50 hover:border-blue-primary hover:bg-blue-primary/5 cursor-pointer transition-all hover:scale-[1.02] group">
+                                <input type="radio" name="career" value="digital-marketing" class="sr-only" required>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="font-bold text-lg text-white group-hover:translate-y-[-2px] transition-transform">Digital Marketing</div>
+                                    <div class="text-sm text-silver-light/80 mt-1">SEO + Analytics</div>
+                                </div>
+                            </label>
+
+                            <label class="career-card p-6 rounded-2xl border-2 border-silver-dark/50 hover:border-blue-primary hover:bg-blue-primary/5 cursor-pointer transition-all hover:scale-[1.02] group">
+                                <input type="radio" name="career" value="startup-founder" class="sr-only" required>
+                                <div class="text-center">
+                                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-all">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="font-bold text-lg text-white group-hover:translate-y-[-2px] transition-transform">Startup Founder</div>
+                                    <div class="text-sm text-silver-light/80 mt-1">Entrepreneurship</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Experience Level -->
+                    <div>
+                        <label class="block text-lg font-semibold text-silver-light mb-4">Your Level <span class="text-red-400">*</span></label>
+                        <select name="level" id="level-select" class="w-full bg-silver-dark/50 border border-silver-dark/50 rounded-2xl px-5 py-5 text-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-primary/50 transition-all" required>
+                            <option value="">Select Experience Level</option>
+                            <option value="beginner">Complete Beginner</option>
+                            <option value="intermediate">Some Knowledge</option>
+                            <option value="advanced">Working Professional</option>
+                        </select>
+                    </div>
+
+                    <!-- Goal Timeline -->
+                    <div>
+                        <label class="block text-lg font-semibold text-silver-light mb-4">Timeline Goal <span class="text-red-400">*</span></label>
+                        <select name="timeline" id="timeline-select" class="w-full bg-silver-dark/50 border border-silver-dark/50 rounded-2xl px-5 py-5 text-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-primary/50 transition-all" required>
+                            <option value="">Select Timeline</option>
+                            <option value="3m">3 Months</option>
+                            <option value="6m">6 Months</option>
+                            <option value="12m">12 Months</option>
+                            <option value="24m">2 Years</option>
+                        </select>
+                    </div>
+
+                    <!-- Additional Context -->
+                    <div class="md:col-span-2">
+                        <label class="block text-lg font-semibold text-silver-light mb-4">Current Skills/Background <span class="text-silver-light/60 text-sm">(optional)</span></label>
+                        <textarea name="background" id="background-text" rows="3" maxlength="500" class="w-full bg-silver-dark/50 border border-silver-dark/50 rounded-2xl px-5 py-4 text-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-primary/50 transition-all resize-vertical" placeholder="Ex: Know basic Python, good at math, weak communication..."></textarea>
+                        <p class="text-xs text-silver-light/60 mt-1"><span id="char-count">0</span>/500 characters</p>
+                    </div>
+
+                    <!-- Error Message Area -->
+                    <div id="error-message" class="md:col-span-2 lg:col-span-3 hidden bg-red-500/20 border border-red-500/50 rounded-2xl p-4 text-red-400"></div>
+
+                    <!-- Generate Roadmap Button -->
+                    <div class="md:col-span-2 lg:col-span-3 pt-4">
+                        <button type="submit" class="w-full bg-gradient-to-r from-green-success to-emerald-500 hover:from-emerald-500 hover:to-green-500 text-white font-bold py-7 px-12 text-2xl rounded-2xl shadow-2xl hover:shadow-3xl hover:-translate-y-1 transition-all duration-300">
+                            🎯 Generate My Complete Skill Roadmap
+                        </button>
+                        <p class="text-center text-sm text-silver-light/60 mt-4">Get technical stack + soft skills + daily habits + tools + learning path</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Results Display Section -->
+        <section id="results-section" class="hidden mb-24">
+            <div class="bg-silver-card border border-silver-dark/50 rounded-3xl p-10 lg:p-16 shadow-2xl">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">Your Complete Career Roadmap</h3>
+                    <p class="text-xl text-silver-light/80" id="career-name"></p>
+                </div>
+
+                <div id="roadmap-content" class="space-y-8">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+
+                <div class="mt-12 text-center">
+                    <button onclick="scrollToForm()" class="px-8 py-4 bg-blue-primary hover:bg-blue-hover text-white font-bold rounded-2xl transition-all">
+                        Generate Another Roadmap
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview What You'll Get -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div class="bg-silver-card p-8 rounded-2xl border border-silver-dark/50 hover:border-blue-primary/50 transition-all">
+                <div class="w-16 h-16 bg-blue-primary/20 border-2 border-blue-primary/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-blue-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 text-center">Technical Stack</h4>
+                <ul class="space-y-2 text-silver-light text-sm">
+                    <li>• Programming languages</li>
+                    <li>• Frameworks & tools</li>
+                    <li>• Must-know libraries</li>
+                    <li>• Development setup</li>
+                </ul>
+            </div>
+
+            <div class="bg-silver-card p-8 rounded-2xl border border-silver-dark/50 hover:border-green-success/50 transition-all">
+                <div class="w-16 h-16 bg-green-success/20 border-2 border-green-success/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-green-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 text-center">Soft Skills</h4>
+                <ul class="space-y-2 text-silver-light text-sm">
+                    <li>• Communication</li>
+                    <li>• Problem solving</li>
+                    <li>• Time management</li>
+                    <li>• Networking</li>
+                </ul>
+            </div>
+
+            <div class="bg-silver-card p-8 rounded-2xl border border-silver-dark/50 hover:border-purple-500/50 transition-all">
+                <div class="w-16 h-16 bg-purple-500/20 border-2 border-purple-500/40 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-4 text-center">Daily Habits</h4>
+                <ul class="space-y-2 text-silver-light text-sm">
+                    <li>• Learning routine</li>
+                    <li>• Practice schedule</li>
+                    <li>• Portfolio building</li>
+                    <li>• Community engagement</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-silver-dark border-t border-silver-dark/50 mt-24">
+        <div class="max-w-6xl mx-auto px-6 py-12 text-center">
+            <p class="text-silver-light/60 text-sm">© 2026 Predictive Student Analysis | Built for BTech students & career switchers</p>
+        </div>
+    </footer>
+
+    <script>
+        // Character counter for background textarea
+        document.getElementById('background-text').addEventListener('input', function(e) {
+            const count = e.target.value.length;
+            document.getElementById('char-count').textContent = count;
+        });
+
+        function scrollToForm() {
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+            // Reset form
+            document.getElementById('skillForm').reset();
+            // Hide results
+            document.getElementById('results-section').classList.add('hidden');
+            // Hide errors
+            document.getElementById('error-message').classList.add('hidden');
+            // Reset character count
+            document.getElementById('char-count').textContent = '0';
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function displayRoadmap(roadmap) {
+            const resultsSection = document.getElementById('results-section');
+            const contentDiv = document.getElementById('roadmap-content');
+            const careerNameDiv = document.getElementById('career-name');
+            
+            // Show results section
+            resultsSection.classList.remove('hidden');
+            
+            // Set career name (safely escaped)
+            careerNameDiv.textContent = `${roadmap.name || 'Unknown'} • ${roadmap.salary_range || 'N/A'}`;
+            
+            // Build HTML content
+            let html = '';
+            
+            // Note
+            if (roadmap.note) {
+                html += `
+                    <div class="bg-green-success/20 border border-green-success/30 rounded-2xl p-6 mb-8">
+                        <p class="text-green-success font-semibold text-lg">${escapeHtml(roadmap.note)}</p>
+                    </div>
+                `;
+            }
+            
+            // Technical Skills
+            if (roadmap.technical && roadmap.technical.length > 0) {
+                html += `
+                    <div class="bg-silver-dark/50 rounded-2xl p-8 border border-silver-dark/50">
+                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-blue-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            </svg>
+                            Technical Skills
+                        </h4>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            ${(roadmap.technical || []).map(skill => `
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-blue-primary mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span class="text-silver-light">${escapeHtml(skill)}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Tools
+            if (roadmap.tools && roadmap.tools.length > 0) {
+                html += `
+                    <div class="bg-silver-dark/50 rounded-2xl p-8 border border-silver-dark/50">
+                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            Essential Tools
+                        </h4>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            ${(roadmap.tools || []).map(tool => `
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-purple-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span class="text-silver-light">${escapeHtml(tool)}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Soft Skills
+            if (roadmap.soft_skills && roadmap.soft_skills.length > 0) {
+                html += `
+                    <div class="bg-silver-dark/50 rounded-2xl p-8 border border-silver-dark/50">
+                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-green-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            Soft Skills
+                        </h4>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            ${(roadmap.soft_skills || []).map(skill => `
+                                <li class="flex items-start space-x-3">
+                                    <svg class="w-5 h-5 text-green-success mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span class="text-silver-light">${escapeHtml(skill)}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Daily Habits
+            if (roadmap.daily_habits && roadmap.daily_habits.length > 0) {
+                html += `
+                    <div class="bg-silver-dark/50 rounded-2xl p-8 border border-silver-dark/50">
+                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Daily Habits
+                        </h4>
+                        <ul class="space-y-3">
+                            ${(roadmap.daily_habits || []).map(habit => `
+                                <li class="flex items-start space-x-3 bg-silver-dark/30 rounded-xl p-4">
+                                    <svg class="w-5 h-5 text-yellow-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                    <span class="text-silver-light">${escapeHtml(habit)}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Timeline
+            if (roadmap.timeline && roadmap.timeline.length > 0) {
+                html += `
+                    <div class="bg-silver-dark/50 rounded-2xl p-8 border border-silver-dark/50">
+                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                            </svg>
+                            12-Month Learning Timeline
+                        </h4>
+                        <div class="space-y-4">
+                            ${(roadmap.timeline || []).map((item, index) => `
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-pink-500/20 border-2 border-pink-500/40 rounded-xl flex items-center justify-center font-bold text-pink-500">
+                                        ${index + 1}
+                                    </div>
+                                    <div class="flex-1 bg-silver-dark/30 rounded-xl p-4">
+                                        <p class="text-silver-light text-lg">${escapeHtml(item)}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Resources
+            if (roadmap.resources && roadmap.resources.length > 0) {
+                html += `
+                    <div class="bg-silver-dark/50 rounded-2xl p-8 border border-silver-dark/50">
+                        <h4 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <svg class="w-6 h-6 mr-3 text-blue-glow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                            Learning Resources
+                        </h4>
+                        <ul class="space-y-3">
+                            ${(roadmap.resources || []).map(resource => `
+                                <li class="flex items-start space-x-3 bg-silver-dark/30 rounded-xl p-4">
+                                    <svg class="w-5 h-5 text-blue-glow mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    <span class="text-silver-light">${escapeHtml(resource)}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            contentDiv.innerHTML = html;
+            
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.getElementById('skillForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            // Clear previous errors
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.classList.add('hidden');
+            errorDiv.textContent = '';
+            
+            // Validate required fields
+            if (!data.career || !data.level || !data.timeline) {
+                errorDiv.textContent = '❌ Please fill in all required fields (Career, Level, and Timeline)';
+                errorDiv.classList.remove('hidden');
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const original = submitBtn.innerHTML;
+            submitBtn.innerHTML = '⏳ Generating Roadmap...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/roadmap', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                let result;
+                try {
+                    result = await response.json();
+                } catch (jsonError) {
+                    throw new Error(`Invalid response from server (Status: ${response.status})`);
+                }
+                
+                if (!response.ok) {
+                    throw new Error(result.error || `Server error: ${response.status} ${response.statusText}`);
+                }
+                
+                if (result.success && result.roadmap) {
+                    displayRoadmap(result.roadmap);
+                } else {
+                    throw new Error(result.error || 'Failed to generate roadmap');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorDiv.textContent = `❌ Error: ${error.message}. Please check that the Flask server is running on port 5000.`;
+                errorDiv.classList.remove('hidden');
+                errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } finally {
+                submitBtn.innerHTML = original;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
